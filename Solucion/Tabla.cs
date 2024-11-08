@@ -10,8 +10,13 @@ namespace Solucion
         private double precioBase;
         public Tabla(double ancho, double largo, double precioBase)
         {
-            this.ancho = ancho;
-            this.largo = largo;
+            if (ancho < largo) { // hay que darles vuelta
+                this.ancho = largo;
+                this.largo = ancho;
+            } else {
+                this.ancho = ancho;
+                this.largo = largo;
+            }
             this.precioBase = precioBase;
         }
 
@@ -44,5 +49,10 @@ namespace Solucion
         public double GetPrecioBase(){
             return this.precioBase;
         }  
+
+        public double GetPrecio() {
+            double precio = this.largo * this.ancho * this.precioBase;
+            return precio;
+        }
     }
 }
